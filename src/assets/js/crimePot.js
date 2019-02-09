@@ -106,19 +106,45 @@ function sanitizeHTML(strings) {
   return result;
 }
 function initMap() {
-    var Boston = {lat: 42.361145, lng: -71.057083}
-    // Creates basic map to show to user
-    const map = new google.maps.Map(document.getElementsByClassName('map')[0], {
-        zoom: 15,
-        center: Boston,
-        styles: mapStyle
-    });
-    // Adds the json data file onto the maps
-    // Json must be in 'geoJson' format
-    map.data.addGeoJson(manualData);
-    // Specifies and defines the custom marker images
-    // using properties of the
-    map.data.setStyle(feature => {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 15
+  });
+  // var infoWindow = new google.maps.InfoWindow();
+if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+          };
+          // Creates a draggable marker at the center of the map,
+          // centered on the user's location initially.
+          var marker = new google.maps.Marker({
+              position: pos,
+              map: map,
+              animation: google.maps.Animation.DROP,
+              draggable:true,
+              icon: `assets/img/GreenMarkerSeeThrough.png`,
+              title:'Drag me!',
+          });
+
+infoWindow.setPosition(pos);
+infoWindow.setContent('Location found.');
+// infoWindow.open(map);
+map.setCenter(pos);
+}, function () {
+    handleLocationError(true, infoWindow, map.getCenter());
+});
+} else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+}
+// Adds the json data file onto the maps
+// Json must be in 'geoJson' format
+map.data.addGeoJson(manualData);
+// Specifies and defines the custom marker images
+// using properties of the
+map.data.setStyle(feature => {
       return {
         icon: {
           url: `assets/img/BlueMarker.png`,
@@ -127,6 +153,8 @@ function initMap() {
       };
     });
 
+
+
   //Declaring apiKey constant for later use in program
   const apiKey = 'AIzaSyCGEIJiz7_1X6o4rve4r_mxxKefkkoOwYc';
   //Declares constant infowindow size for when user
@@ -134,7 +162,10 @@ function initMap() {
   const infoWindow = new google.maps.InfoWindow();
   infoWindow.setOptions({pixelOffset: new google.maps.Size(0, -30)});
 
-
+// This block of code adds a click event
+// to each icon on the map, which
+// when clicked, displays more information
+// about the crime.
   map.data.addListener('click', event => {
 
   const category = event.feature.getProperty('category');
@@ -151,9 +182,18 @@ function initMap() {
       <p><img src="https://maps.googleapis.com/maps/api/streetview?size=350x120&location=${position.lat()},${position.lng()}&key=${apiKey}"></p>
     </div>
   `;
+  map.data.addListener('click', event)
 
   infoWindow.setContent(content);
   infoWindow.setPosition(position);
   infoWindow.open(map);
-});
+  });
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+    'Error: The Geolocation service failed.' :
+    'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
 }
