@@ -5,12 +5,17 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="assets/css/crimePot.css">
+    <style>
+    .map {height: 100%;}
+    html, body {height: 100%; margin: 0; padding: 0;}
+  </style>
   </head>
   <body>
-    <div id="map"></div>
-    
+    <div class="map"></div>
+    <script src="assets/js/manualdata.js"></script>
     <script src="assets/js/crimePot.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGEIJiz7_1X6o4rve4r_mxxKefkkoOwYc&callback=initMap"
-    async defer></script>
+    <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGEIJiz7_1X6o4rve4r_mxxKefkkoOwYc&callback=initMap">
+  </script>
   </body>
 </html>
