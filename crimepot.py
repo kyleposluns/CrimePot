@@ -15,6 +15,7 @@ def query_map():
     hours = requests.get('hours')
     days = requests.get('days')
     weeks = requests.get('weeks')
+    date = target_date(minutes, hours, days, weeks)
 
 def create_time_delta(minutes, hours, days, weeks):
     return datetime.timedelta(days=(days if days is not None else 0), seconds=0, microseconds=0, milliseconds=0,
