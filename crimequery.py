@@ -15,6 +15,3 @@ def complete_get_request(today, yesterday):
     URL = url(today, yesterday)
     request = requests.get(url=URL)
     return request.json()
-
-def test():
-    return requests.get(url="https://data.boston.gov/api/3/action/datastore_search_sql?sql=SELECT * from \"12cb3883-56f5-47de-afa5-3b1cf61b257b\" WHERE title LIKE 'jones'").json()
