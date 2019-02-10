@@ -3,15 +3,16 @@
 from flask import Flask, request
 import datetime
 import crimequery as cquery
+import geojsoncompat as gjc
 
 app = Flask(__name__)
 
 #localhost:5000/crime_map?lat=31.29734&long=29.32948&radius=1km&time=1mo
 @app.route('/crime_map')
 def query_map():
-    lat = request.args['lat']
-    long = request.args['long']
-    radius = request.args['radius']
+    lat = float(request.args['lat'])
+    long = float(request.args['long'])
+    radius = float(request.args['radius'])
     minutes = int(request.args['minutes'])
     hours = int(request.args['hours'])
     days = int(request.args['days'])
@@ -21,7 +22,7 @@ def query_map():
     target_date_string = target_date(minutes, hours, days, weeks).isoformat()
     target_date_string_formatted = target_date_string[:10] + " " + target_date_string[11:19]
     json = cquery.complete_get_request(datetime.datetime.now().isoformat(), target_date_string_formatted)
-    return str(json)
+    return str(gjc.filterByRadius(json, lat, long, radius))
 
 
 def create_time_delta(minutes, hours, days, weeks):
