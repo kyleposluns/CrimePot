@@ -43,4 +43,4 @@ with urllib.request.urlopen(data_url) as url:
                 }
             })
             geoJsonDicts["features:"] = arrayOfObjects
-    print(geoJsonDicts)
+    return(geoJsonDicts)
