@@ -44,5 +44,5 @@ def filterByRadius(dict, lat, long, radius):
               "Street": object["street"].title()
           }
       })
-      geoJsonDicts["features:"] = arrayOfObjects
+      geoJsonDicts["features"] = arrayOfObjects
   return (geoJsonDicts)
