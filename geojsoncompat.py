@@ -20,7 +20,7 @@ def filterByRadius(dict, lat, long, radius):
   arrayOfObjects = []
 
   for object in python_obj:
-    if (object["lat"] == None or object["long"] == None or object["month"] == None or object["year"] == None or object["occurred_on_date"] == None):
+    if (object["lat"] == None or object["long"] == None or object["month"] == None or object["year"] == None or object["street"] == None or object["occurred_on_date"] == None):
       continue
 
     lat1 = float(object["lat"])

@@ -19,25 +19,19 @@ def query_map():
     lat = float(request.args['lat'])
     long = float(request.args['long'])
     radius = float(request.args['radius'])
-    minutes = int(request.args['minutes'])
-    hours = int(request.args['hours'])
     days = int(request.args['days'])
-    weeks = int(request.args['weeks'])
     #'2019-02-09T19:08:07.332185'
     #'2019-02-09 19:08:00'
-    target_date_string = target_date(minutes, hours, days, weeks).isoformat()
+    target_date_string = target_date(days).isoformat()
     target_date_string_formatted = target_date_string[:10] + " " + target_date_string[11:19]
     json_dict = cquery.complete_get_request(datetime.datetime.now().isoformat(), target_date_string_formatted)
     return json.dumps(gjc.filterByRadius(json_dict, lat, long, radius))
 
-def create_time_delta(minutes, hours, days, weeks):
-    return datetime.timedelta(days=(days if days is not None else 0), seconds=0, microseconds=0, milliseconds=0,
-    minutes=(minutes if minutes is not None else 0),
-     hours=(hours if hours is not None else 0),
-     weeks=(weeks if weeks is not None else 0))
+def create_time_delta(days):
+    return datetime.timedelta(days=days)
 
-def target_date(minutes, hours, days, weeks):
-    return datetime.datetime.now() - create_time_delta(minutes, hours, days, weeks)
+def target_date(days):
+    return datetime.datetime.now() - create_time_delta(days)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
