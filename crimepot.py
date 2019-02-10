@@ -34,4 +34,4 @@ def target_date(days):
     return datetime.datetime.now() - create_time_delta(days)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(port=5000)
