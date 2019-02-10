@@ -14,7 +14,6 @@ def distBetween(lon1, lat1, lon2, lat2):
   return(c * r)
 
 def filterByRadiusAndTime(dict, lat, long, radius, past_day):
-  # python_obj = json.loads(json_str)["result"]["records"]
   python_obj = dict.get('result').get('records')
   geoJsonDicts = {"type": "FeatureCollection"}
   arrayOfObjects = []
