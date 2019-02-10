@@ -11,11 +11,16 @@ def query_map():
     lat = request.args['lat']
     long = request.args['long']
     radius = request.args['radius']
-    minutes = request.get('minutes')
-    hours = requests.get('hours')
-    days = requests.get('days')
-    weeks = requests.get('weeks')
-    date = target_date(minutes, hours, days, weeks)
+    minutes = int(request.args['minutes'])
+    hours = int(request.args['hours'])
+    days = int(request.args['days'])
+    weeks = int(request.args['weeks'])
+    #'2019-02-09T19:08:07.332185'
+    #'2019-02-09 19:08:00'
+    datestring = target_date(minutes, hours, days, weeks).isoformat()
+    datestring_formatted = datestring[:10] + " " + datestring[11:19]
+    return datestring_formatted
+
 
 def create_time_delta(minutes, hours, days, weeks):
     return datetime.timedelta(days=(days if days is not None else 0), seconds=0, microseconds=0, milliseconds=0,
@@ -24,7 +29,7 @@ def create_time_delta(minutes, hours, days, weeks):
      weeks=(weeks if weeks is not None else 0))
 
 def target_date(minutes, hours, days, weeks):
-    return datetime.datetime.now() - create_time_delta(minutes, hours, days, weeks))
+    return datetime.datetime.now() - create_time_delta(minutes, hours, days, weeks)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
