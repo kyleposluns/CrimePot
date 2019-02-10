@@ -6,6 +6,8 @@ A project that uses the data from the Crime Incident Reports provided by the Bos
 
 Written in Python 3, Flask, Javascript, HTML, and CSS. Created for [Hack Beanpot](https://hackbeanpot.com/) 2019.
 
+![alt text](https://i.imgur.com/cMXQ3im.png)
+
 ### Requirements
 * `python 3.7.2`
 
