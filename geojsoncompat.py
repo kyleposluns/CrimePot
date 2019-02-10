@@ -31,11 +31,11 @@ def filterByRadius(dict, lat, long, radius):
 
     if (distBetween(long1, lat1, long, lat) <= radius):
       arrayOfObjects.append({
-          "type": "Feature",
           "geometry": {
               "type": "Point",
               "coordinates": [long1, lat1]
           },
+          "type": "Feature",
           "properties": {
               "Offense decription": object["offense_description"][0] + object["offense_description"][1:].lower(),
               "Date": month + "/" + date[8:10] + "/" + year,
