@@ -13,7 +13,7 @@ def distBetween(lon1, lat1, lon2, lat2):
   r = 3956  # Radius of earth in kilometers. Use 6371 for kilometers.
   return(c * r)
 
-def filterByRadius(dict, lat, long, radius):
+def filterByRadiusAndTime(dict, lat, long, radius, past_day):
   # python_obj = json.loads(json_str)["result"]["records"]
   python_obj = dict.get('result').get('records')
   geoJsonDicts = {"type": "FeatureCollection"}
@@ -29,7 +29,7 @@ def filterByRadius(dict, lat, long, radius):
     year = object["year"]
     date = object["occurred_on_date"]
 
-    if (distBetween(long1, lat1, long, lat) <= radius):
+    if (distBetween(long1, lat1, long, lat) <= radius) and (date > past_day):
       arrayOfObjects.append({
           "geometry": {
               "type": "Point",
@@ -37,7 +37,7 @@ def filterByRadius(dict, lat, long, radius):
           },
           "type": "Feature",
           "properties": {
-              "Offense decription": object["offense_description"][0] + object["offense_description"][1:].lower(),
+              "Offense description": object["offense_description"][0] + object["offense_description"][1:].lower(),
               "Date": month + "/" + date[8:10] + "/" + year,
               "Time": date[11:],
               "District": object["district"],
