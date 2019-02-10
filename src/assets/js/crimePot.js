@@ -508,7 +508,7 @@ function sanitizeHTML(strings) {
 function placeBlueMarkers() {
   // Adds the json data file onto the maps
   // Json must be in 'geoJson' format
-  map.data.addGeoJson(manualData);
+  map.data.addGeoJson(crimes);
   // Specifies and defines the custom marker images
   // using properties of the
   map.data.setStyle(feature => {

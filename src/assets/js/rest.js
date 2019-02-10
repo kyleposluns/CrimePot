@@ -1,19 +1,20 @@
 var request = new XMLHttpRequest();
-var data;
+var crimes;
 
-request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+request.open('GET', 'http://localhost:5000/crime_map?lat=42.3506&long=-71.04723&radius=100&days=8', true);
 request.onload = function () {
 
   // Begin accessing JSON data here
-  data = JSON.parse(this.response);
+  crimes = JSON.parse(this.response);
+  console.log(crimes);
 
-  if (request.status >= 200 && request.status < 400) {
-    data.forEach(movie => {
-      console.log(movie.title);
-    });
-  } else {
-    console.log('error');
-  }
+  // if (request.status >= 200 && request.status < 400) {
+  //   data.forEach(movie => {
+  //     console.log(movie.title);
+  //   });
+  // } else {
+  //   console.log('error');
+  // }
 }
 
 request.send();
