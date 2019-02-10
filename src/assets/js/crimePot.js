@@ -216,6 +216,8 @@ const mapStyle = [
 
 var getStarted = document.getElementById("getStarted");
 getStarted.addEventListener("click", function () {
+  $(".inputUI").attr("style", "display: flex");
+
   var canvas = document.getElementsByClassName("canvas");
   canvas[0].remove();
   placeBlueMarkers();
@@ -334,11 +336,21 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
+var slider = document.getElementById("radiusSlide");
+var output = document.getElementById("radius");
 output.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
-slider.oninput = function () {
-  output.innerHTML = this.value;
-}
+// slider.oninput = function () {
+//   output.innerHTML = this.value;
+// }
+// output.oninput = function () {
+//   slider.value = output.innerHTML;
+// }
+
+// function updateRadiusText(val) {
+//   document.getElementById('radius').value=val; 
+// }
+// function updateMilesText(val) {
+//   document.getElementById('miles').value=val; 
+// }
