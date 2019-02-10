@@ -12,6 +12,9 @@ Written in Python 3, Flask, Javascript, HTML, and CSS. Created for [Hack Beanpot
 ### Requirements
 * `python 3.7.2`
 
+### Instructions
+* `./crimepot.py`
+
 ## By:
 - Pratheek Hegde [@prathegde](https://github.com/prathegde) Front End
 - Stanley Liu [@liustanley](https://github.com/liustanley) Front End
