@@ -488,8 +488,8 @@ function clearElements() {
 function generateURLString() {
   var lat = userMarker.getPosition().lat();
   var lng = userMarker.getPosition().lng();
-  var radius = document.querySelector("#radius");
-  var days = document.querySelector("#time");
+  var radius = document.querySelector("#radiusSlide");
+  var days = document.querySelector("#timeSlide");
 
   return 'http://localhost:8080/crime_map?lat=' + lat + '&long=' + lng + '&radius=' + radius.value + '&days=' + days.value;
 }
@@ -550,19 +550,24 @@ function sanitizeHTML(strings) {
 }
 
 function placeBlueMarkers(crimes) {
-  // Adds the json data file onto the maps
-  // Json must be in 'geoJson' format
-  map.data.addGeoJson(crimes);
-  // Specifies and defines the custom marker images
-  // using properties of the
-  map.data.setStyle(feature => {
-    return {
-      icon: {
-        url: `assets/img/BlueMarker.png`,
-        scaledSize: new google.maps.Size(64, 64),
-      }
-    };
-  });
+  try {
+    // Adds the json data file onto the maps
+    // Json must be in 'geoJson' format
+    map.data.addGeoJson(crimes);
+    // Specifies and defines the custom marker images
+    // using properties of the
+    map.data.setStyle(feature => {
+      return {
+        icon: {
+          url: `assets/img/BlueMarker.png`,
+          scaledSize: new google.maps.Size(64, 64),
+        }
+      };
+    });
+  } catch(err) {
+    alert("Congrats! No crimes were found :-)");
+  }
+  
 }
 
 function initMap() {

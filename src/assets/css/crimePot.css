@@ -71,7 +71,7 @@ html, body {
 }
 
 .floating-button {
-  width: 12%;
+  width: 8%;
 }
 
 .floating-slider {
@@ -95,6 +95,12 @@ button {
   display: inline-block;
   font-size: 24px;
   font-family: "Montserrat", "Avenir";
+  outline-color: black;
+}
+
+button:hover {
+  font-weight: bold;
+  cursor: pointer;
 }
 
 #search {
