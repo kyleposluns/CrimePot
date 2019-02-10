@@ -45,6 +45,22 @@ html, body {
   animation: fadein 2s;
 }
 
+.fadeout {
+  -webkit-animation: fadeout 2s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeout 2s;
+  /* Firefox < 16 */
+  -ms-animation: fadeout 2s;
+  /* Internet Explorer */
+  -o-animation: fadeout 2s;
+  /* Opera < 12.1 */
+  animation: fadeout 2s;
+}
+
+.hidden {
+  opacity: 0 !important;
+}
+
 .floating {
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -138,6 +154,59 @@ button {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Firefox < 16 */
+
+@-moz-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+
+@-webkit-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Internet Explorer */
+
+@-ms-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Opera < 12.1 */
+
+@-o-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 

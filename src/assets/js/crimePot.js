@@ -453,12 +453,14 @@ const silverStyle = [
 ];
 
 var crimes;
+var userMarker;
 
 var search = document.getElementById("search");
 search.addEventListener("click", function () {
+
   var request = new XMLHttpRequest();
 
-  request.open('GET', 'http://localhost:5000/crime_map?lat=42.3506&long=-71.04723&radius=100&days=50', true);
+  request.open('GET', generateURLString(), true);
   
   request.onload = function () {
 
@@ -482,15 +484,27 @@ search.addEventListener("click", function () {
 
 });
 
+function generateURLString() {
+  var lat = userMarker.getPosition().lat();
+  var lng = userMarker.getPosition().lng(); 
+  var radius = document.querySelector("#radius");
+  var days = document.querySelector("#time");
+  
+  return 'http://localhost:5000/crime_map?lat=' + lat + '&long=' + lng + '&radius=' + radius.value + '&days=' + days.value;
+}
+
 var getStarted = document.getElementById("getStarted");
 getStarted.addEventListener("click", function () {
   map.setOptions({ styles: retroStyle });
 
   $(".inputUI").attr("style", "display: flex");
 
-  var canvas = document.getElementsByClassName("canvas");
-
-  canvas[0].remove();
+  // var canvas = document.getElementsByClassName("canvas");
+  var canvas = $(".canvas");
+  canvas.addClass("fadeout");
+  canvas.one('webkitAnimationend oanimationend msAnimationEnd animationend', (e) => canvas.remove());
+  //canvas.remove();
+  //anvas.fadeOut(500, () => {canvas.remove()});
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -500,7 +514,7 @@ getStarted.addEventListener("click", function () {
       };
       // Creates a draggable marker at the center of the map,
       // centered on the user's location initially.
-      var marker = new google.maps.Marker({
+      userMarker = new google.maps.Marker({
         position: pos,
         map: map,
         animation: google.maps.Animation.DROP,
@@ -605,22 +619,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-var slider = document.getElementById("radiusSlide");
-var output = document.getElementById("radius");
-output.innerHTML = slider.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-
-slider.oninput = function () {
-  output.innerHTML = this.value;
-}
-output.oninput = function () {
-  slider.value = output.innerHTML;
-}
-
-function updateRadiusText(val) {
-  document.getElementById('radius').value = val;
-}
-function updateMilesText(val) {
-  document.getElementById('miles').value = val;
-}
