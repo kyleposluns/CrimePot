@@ -39,9 +39,9 @@
 
   <div class="inputUI">
     <div class="floating floating-slider">
-      <b>Time: </b>
+      <b>Days Ago: </b>
       <div class="slidecontainer">
-        <input type="range" min="5" max="1000" value="1" class="slider" id="timeSlide"
+        <input type="range" min="4" max="500" value="4" class="slider" id="timeSlide"
           oninput="time.value = timeSlide.value">
       </div>
       <input type="text" placeholder="days" id="time" oninput="timeSlide.value = time.value">
@@ -49,7 +49,7 @@
     <div class="floating floating-slider slider-bottom">
       <b>Radius: </b>
       <div class="slidecontainer">
-        <input type="range" min="1" max="20" value="1" class="slider" id="radiusSlide"
+        <input type="range" min="0" max="15" value="0" class="slider" id="radiusSlide"
           oninput="radius.value = radiusSlide.value">
       </div>
       <input type="text" placeholder="miles" id="radius" oninput="radiusSlide.value = radius.value">

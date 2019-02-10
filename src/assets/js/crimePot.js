@@ -452,31 +452,26 @@ const silverStyle = [
   }
 ];
 
-var crimes;
 var userMarker;
+
+var radiusSlide = document.querySelector("#radiusSlide");
+radiusSlide.step = ".1";
+
 
 var search = document.getElementById("search");
 search.addEventListener("click", function () {
-
+  clearElements();
   var request = new XMLHttpRequest();
 
   request.open('GET', generateURLString(), true);
-  
+
   request.onload = function () {
 
     // Begin accessing JSON data here
-    crimes = JSON.parse(this.response);
-    console.log(crimes);
+    var data = JSON.parse(this.response);
+    console.log(data);
 
-    placeBlueMarkers();
-
-    // if (request.status >= 200 && request.status < 400) {
-    //   data.forEach(movie => {
-    //     console.log(movie.title);
-    //   });
-    // } else {
-    //   console.log('error');
-    // }
+    placeBlueMarkers(data);
   }
 
   request.send();
@@ -484,12 +479,18 @@ search.addEventListener("click", function () {
 
 });
 
+function clearElements() {
+  map.data.forEach(function (feature) {
+    map.data.remove(feature);
+  });
+}
+
 function generateURLString() {
   var lat = userMarker.getPosition().lat();
-  var lng = userMarker.getPosition().lng(); 
+  var lng = userMarker.getPosition().lng();
   var radius = document.querySelector("#radius");
   var days = document.querySelector("#time");
-  
+
   return 'http://localhost:8080/crime_map?lat=' + lat + '&long=' + lng + '&radius=' + radius.value + '&days=' + days.value;
 }
 
@@ -548,7 +549,7 @@ function sanitizeHTML(strings) {
   return result;
 }
 
-function placeBlueMarkers() {
+function placeBlueMarkers(crimes) {
   // Adds the json data file onto the maps
   // Json must be in 'geoJson' format
   map.data.addGeoJson(crimes);
