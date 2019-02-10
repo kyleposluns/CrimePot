@@ -148,7 +148,7 @@ button {
 .slidecontainer {
   width: 100%;
   align-items: center;
-  margin-top: 2px;
+  margin-top: 5px;
   /* Width of the outside container */
 }
 
@@ -160,7 +160,8 @@ button {
   appearance: none;
   width: 90%;
   /* Full-width */
-  height: 25px;
+  height: 10px;
+  border-radius: 5px;
   /* Specified height */
   background: #d3d3d3;
   /* Grey background */
@@ -189,6 +190,7 @@ button {
   width: 25px;
   /* Set a specific slider handle width */
   height: 25px;
+  border-radius: 50%;
   /* Slider handle height */
   background: #6199F3;
   /* Green background */
@@ -200,6 +202,7 @@ button {
   width: 25px;
   /* Set a specific slider handle width */
   height: 25px;
+  border-radius: 50%;
   /* Slider handle height */
   background: #4CAF50;
   /* Green background */
@@ -209,7 +212,11 @@ button {
 
 b {
   font-weight: normal;
-  margin-top: 4px;
+  margin-top: 3px;
   width: 20%;
   font-size: 1.2em;
+}
+
+.slider-bottom {
+  margin-top: 0;
 }
