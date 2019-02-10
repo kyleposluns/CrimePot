@@ -164,7 +164,8 @@ getStarted.addEventListener("click", function () {
   console.log("clicked");
   var canvas = document.getElementsByClassName("canvas");
   canvas[0].remove();
-  
+  placeBlueMarkers();
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       var pos = {
@@ -205,15 +206,8 @@ function sanitizeHTML(strings) {
   }
   return result;
 }
-function initMap() {
-  var Boston = {lat: 42.361145, lng: -71.057083};
 
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: Boston,
-    zoom: 15
-  });
-  // var infoWindow = new google.maps.InfoWindow();
-  
+function placeBlueMarkers() {
   // Adds the json data file onto the maps
   // Json must be in 'geoJson' format
   map.data.addGeoJson(manualData);
@@ -227,6 +221,18 @@ function initMap() {
       }
     };
   });
+}
+
+function initMap() {
+  var Boston = {lat: 42.361145, lng: -71.057083};
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: Boston,
+    zoom: 15
+  });
+  // var infoWindow = new google.maps.InfoWindow();
+  
+  
 
 
 
@@ -271,4 +277,13 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     'Error: The Geolocation service failed.' :
     'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
+}
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.innerHTML = this.value;
 }

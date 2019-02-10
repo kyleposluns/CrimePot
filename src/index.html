@@ -32,12 +32,31 @@
     </div>
   </div>
 
+  <div class="inputUI">
+    <div class="floating floating-slider">
+      <b>Time: </b>
+      <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+      </div>
+    </div>
+    <div class="floating floating-slider">
+      <b>Radius: </b>
+      <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+      </div>
+    </div>
+  </div>
+
+
+
   <div id='map'></div>
   <script src="assets/js/manualdata.js"></script>
   <script src="assets/js/crimePot.js"></script>
+  <script src="assets/js/rest.js"></script>
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGEIJiz7_1X6o4rve4r_mxxKefkkoOwYc&callback=initMap">
-  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGEIJiz7_1X6o4rve4r_mxxKefkkoOwYc&callback=initMap">
+    </script>
 </body>
 
 </html>
