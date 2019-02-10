@@ -2,6 +2,7 @@
 
 from flask import Flask, request
 import datetime
+import crimequery as cquery
 
 app = Flask(__name__)
 
@@ -17,9 +18,10 @@ def query_map():
     weeks = int(request.args['weeks'])
     #'2019-02-09T19:08:07.332185'
     #'2019-02-09 19:08:00'
-    datestring = target_date(minutes, hours, days, weeks).isoformat()
-    datestring_formatted = datestring[:10] + " " + datestring[11:19]
-    return datestring_formatted
+    target_date_string = target_date(minutes, hours, days, weeks).isoformat()
+    target_date_string_formatted = target_date_string[:10] + " " + target_date_string[11:19]
+    json = cquery.complete_get_request(datetime.datetime.now().isoformat(), target_date_string_formatted)
+    return str(json)
 
 
 def create_time_delta(minutes, hours, days, weeks):
