@@ -15,7 +15,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 #localhost:5000/crime_map?lat=31.29734&long=29.32948&radius=1km&time=1mo
 @app.route('/crime_map')
 @cross_origin()
-def query_map():
+def crime_map():
     lat = float(request.args['lat'])
     long = float(request.args['long'])
     radius = float(request.args['radius'])
@@ -34,4 +34,4 @@ def target_date(days):
     return datetime.datetime.now() - create_time_delta(days)
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(port=8080)
