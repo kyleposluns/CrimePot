@@ -25,7 +25,7 @@ def query_map():
     target_date_string = target_date(days).isoformat()
     target_date_string_formatted = target_date_string[:10] + " " + target_date_string[11:19]
     json_dict = cquery.complete_get_request(datetime.datetime.now().isoformat(), target_date_string_formatted)
-    return json.dumps(gjc.filterByRadius(json_dict, lat, long, radius))
+    return json.dumps(gjc.filterByRadiusAndTime(json_dict, lat, long, radius, target_date_string_formatted))
 
 def create_time_delta(days):
     return datetime.timedelta(days=days)
