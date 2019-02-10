@@ -544,17 +544,19 @@ function initMap() {
   // about the crime.
   map.data.addListener('click', event => {
 
-    const category = event.feature.getProperty('category');
-    const time = event.feature.getProperty('time');
-    const day = event.feature.getProperty('day');
-    const street = event.feature.getProperty('street');
+    // "Date", "Time", "Offense description", "Street", "District"
+    const category = event.feature.getProperty('Offense decription');
+    const time = event.feature.getProperty('Time');
+    const day = event.feature.getProperty('Date');
+    const street = event.feature.getProperty('Street');
+    const district = event.feature.getProperty('District')
 
     const position = event.feature.getGeometry().get();
     const content = sanitizeHTML`
     <img style="float:left; width:200px; margin-top:30px" src="assets/img/BlueMarker.png">
     <div style="margin-left:220px; margin-bottom:20px;">
       <h2>${category}</h2>
-      <p><b>Date and Time of Crime:</b> ${day} ${time}<br/><b></b> ${street}
+      <p><b>Date and Time of Crime:</b> ${day} ${time}<br/><b></b> ${street} ${district}
       <p><img src="https://maps.googleapis.com/maps/api/streetview?size=350x120&location=${position.lat()},${position.lng()}&key=${apiKey}"></p>
     </div>
   `;
