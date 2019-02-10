@@ -31,6 +31,7 @@ html, body {
   -o-animation: fadein 2s;
   /* Opera < 12.1 */
   animation: fadein 2s;
+  margin-bottom: 16px;
 }
 
 .canvas {
@@ -72,10 +73,6 @@ html, body {
   flex-direction: row;
 }
 
-.floating-calendar {
-  z-index: 1;
-}
-
 h1 {
   font-size: 5em;
   font-weight: normal;
@@ -90,6 +87,13 @@ button {
   display: inline-block;
   font-size: 24px;
   font-family: "Montserrat", "Avenir";
+}
+
+#search {
+  height: 30px;
+  border: none;
+  margin: 0;
+  z-index: 10;
 }
 
 @keyframes fadein {
@@ -219,4 +223,5 @@ b {
 
 .slider-bottom {
   margin-top: 0;
+  width: 33%;
 }
