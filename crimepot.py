@@ -4,11 +4,15 @@ from flask import Flask, request
 import datetime
 import crimequery as cquery
 import geojsoncompat as gjc
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 #localhost:5000/crime_map?lat=31.29734&long=29.32948&radius=1km&time=1mo
 @app.route('/crime_map')
+@cross_origin()
 def query_map():
     lat = float(request.args['lat'])
     long = float(request.args['long'])
