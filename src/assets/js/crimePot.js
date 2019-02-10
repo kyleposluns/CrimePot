@@ -490,7 +490,7 @@ function generateURLString() {
   var radius = document.querySelector("#radius");
   var days = document.querySelector("#time");
   
-  return 'http://localhost:5000/crime_map?lat=' + lat + '&long=' + lng + '&radius=' + radius.value + '&days=' + days.value;
+  return 'http://localhost:8080/crime_map?lat=' + lat + '&long=' + lng + '&radius=' + radius.value + '&days=' + days.value;
 }
 
 var getStarted = document.getElementById("getStarted");
