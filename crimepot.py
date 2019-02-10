@@ -5,6 +5,8 @@ import datetime
 import crimequery as cquery
 import geojsoncompat as gjc
 from flask_cors import CORS, cross_origin
+import json
+
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -25,8 +27,8 @@ def query_map():
     #'2019-02-09 19:08:00'
     target_date_string = target_date(minutes, hours, days, weeks).isoformat()
     target_date_string_formatted = target_date_string[:10] + " " + target_date_string[11:19]
-    json = cquery.complete_get_request(datetime.datetime.now().isoformat(), target_date_string_formatted)
-    return str(gjc.filterByRadius(json, lat, long, radius))
+    json_dict = cquery.complete_get_request(datetime.datetime.now().isoformat(), target_date_string_formatted)
+    return json.dumps(gjc.filterByRadius(json_dict, lat, long, radius))
 
 def create_time_delta(minutes, hours, days, weeks):
     return datetime.timedelta(days=(days if days is not None else 0), seconds=0, microseconds=0, milliseconds=0,
