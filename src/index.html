@@ -1,6 +1,73 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>CrimePot</title>
-    </head>
+
+<head>
+  <title>CrimePot</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="assets/css/crimePot.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <style>
+    .map {
+      height: 100%;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Landing page html -->
+  <div class="canvas">
+    <div class="floating">
+      <h1>CrimePot</h1>
+    </div>
+
+    <div class="floating floating-button">
+      <button id="getStarted" type="button">Get Started</button>
+    </div>
+  </div>
+
+  <div class="inputUI">
+    <div class="floating floating-slider">
+      <b>Time: </b>
+      <div class="slidecontainer">
+        <input type="range" min="5" max="1000" value="1" class="slider" id="timeSlide"
+          oninput="time.value = timeSlide.value">
+      </div>
+      <input type="text" placeholder="days" id="time" oninput="timeSlide.value = time.value">
+    </div>
+    <div class="floating floating-slider slider-bottom">
+      <b>Radius: </b>
+      <div class="slidecontainer">
+        <input type="range" min="1" max="20" value="1" class="slider" id="radiusSlide"
+          oninput="radius.value = radiusSlide.value">
+      </div>
+      <input type="text" placeholder="miles" id="radius" oninput="radiusSlide.value = radius.value">
+      <button id="search" type="button"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+
+
+
+  <div id='map'></div>
+  <script src="assets/js/manualdata.js"></script>
+  <script src="assets/js/crimePot.js"></script>
+  <script src="assets/js/rest.js"></script>
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGEIJiz7_1X6o4rve4r_mxxKefkkoOwYc&callback=initMap">
+    </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.js"
+    integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA=" crossorigin="anonymous"></script>
+
+</body>
+
 </html>
