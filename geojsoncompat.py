@@ -13,13 +13,6 @@ def distBetween(lon1, lat1, lon2, lat2):
   r = 6371  # Radius of earth in kilometers. Use 3956 for miles
   return(c * r)
 
-
-'''
-with urllib.request.urlopen(data_url) as url:
-    python_obj = json.loads(url.read().decode())["result"]["records"]
-'''
-
-
 def filterByRadius(dict, lat, long, radius):
   # python_obj = json.loads(json_str)["result"]["records"]
   python_obj = dict.get('result').get('records')
