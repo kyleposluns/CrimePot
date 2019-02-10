@@ -1,4 +1,4 @@
-const mapStyle = [
+const retroStyle = [
   {
     "elementType": "geometry",
     "stylers": [
@@ -213,12 +213,256 @@ const mapStyle = [
     ]
   }
 ];
+const silverStyle = [
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#bdbdbd"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.business",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e5e5e5"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#ffffff"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dadada"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e5e5e5"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#c9c9c9"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  }
+];
 
 var getStarted = document.getElementById("getStarted");
 getStarted.addEventListener("click", function () {
+<<<<<<< HEAD
   $(".inputUI").attr("style", "display: flex");
 
+=======
+  console.log("clicked");
+>>>>>>> 0915881c54ae7044110210f8d43d26ae10b532f3
   var canvas = document.getElementsByClassName("canvas");
+
+  map.setOptions({styles:retroStyle});
   canvas[0].remove();
   placeBlueMarkers();
 
@@ -235,9 +479,10 @@ getStarted.addEventListener("click", function () {
         map: map,
         animation: google.maps.Animation.DROP,
         draggable: true,
-        icon: `assets/img/GreenMarkerSeeThrough.png`,
+        icon: `assets/img/RedMarker5.png`,
         title: 'Drag me!',
       });
+
 
       map.setCenter(pos);
     }, function () {
@@ -273,19 +518,19 @@ function placeBlueMarkers() {
     return {
       icon: {
         url: `assets/img/BlueMarker.png`,
-        scaledSize: new google.maps.Size(64, 64)
+        scaledSize: new google.maps.Size(64, 64),
       }
     };
   });
 }
 
 function initMap() {
-  var Boston = { lat: 42.361145, lng: -71.057083 };
+  var Boston = {lat: 42.361145, lng: -71.057083};
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: Boston,
     zoom: 15,
-    styles: mapStyle
+    styles: silverStyle
   });
   // var infoWindow = new google.maps.InfoWindow();
 
@@ -341,16 +586,17 @@ var output = document.getElementById("radius");
 output.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
-// slider.oninput = function () {
-//   output.innerHTML = this.value;
-// }
-// output.oninput = function () {
-//   slider.value = output.innerHTML;
-// }
 
-// function updateRadiusText(val) {
-//   document.getElementById('radius').value=val; 
-// }
-// function updateMilesText(val) {
-//   document.getElementById('miles').value=val; 
-// }
+slider.oninput = function () {
+  output.innerHTML = this.value;
+}
+output.oninput = function () {
+  slider.value = output.innerHTML;
+}
+
+function updateRadiusText(val) {
+  document.getElementById('radius').value=val; 
+}
+function updateMilesText(val) {
+  document.getElementById('miles').value=val; 
+}
