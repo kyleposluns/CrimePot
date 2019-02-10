@@ -452,6 +452,36 @@ const silverStyle = [
   }
 ];
 
+var crimes;
+
+var search = document.getElementById("search");
+search.addEventListener("click", function () {
+  var request = new XMLHttpRequest();
+
+  request.open('GET', 'http://localhost:5000/crime_map?lat=42.3506&long=-71.04723&radius=100&days=50', true);
+  
+  request.onload = function () {
+
+    // Begin accessing JSON data here
+    crimes = JSON.parse(this.response);
+    console.log(crimes);
+
+    placeBlueMarkers();
+
+    // if (request.status >= 200 && request.status < 400) {
+    //   data.forEach(movie => {
+    //     console.log(movie.title);
+    //   });
+    // } else {
+    //   console.log('error');
+    // }
+  }
+
+  request.send();
+
+
+});
+
 var getStarted = document.getElementById("getStarted");
 getStarted.addEventListener("click", function () {
   map.setOptions({ styles: retroStyle });
@@ -461,7 +491,6 @@ getStarted.addEventListener("click", function () {
   var canvas = document.getElementsByClassName("canvas");
 
   canvas[0].remove();
-  placeBlueMarkers();
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -545,7 +574,7 @@ function initMap() {
   map.data.addListener('click', event => {
 
     // "Date", "Time", "Offense description", "Street", "District"
-    const category = event.feature.getProperty('Offense decription');
+    const category = event.feature.getProperty('Offense description');
     const time = event.feature.getProperty('Time');
     const day = event.feature.getProperty('Date');
     const street = event.feature.getProperty('Street');
