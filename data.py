@@ -43,11 +43,4 @@ with urllib.request.urlopen(data_url) as url:
                 }
             })
             geoJsonDicts["features:"] = arrayOfObjects
-            #count += 1
-print(geoJsonDicts)
-
-#     with open("data.json", 'w') as file:
-#         json.dump(geoJsonDicts, file)
-#         print(file)
-#
-# filterByRadius()
+    print(geoJsonDicts)
