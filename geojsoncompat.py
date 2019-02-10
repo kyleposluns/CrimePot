@@ -17,7 +17,7 @@ def distBetween(lon1, lat1, lon2, lat2):
 with urllib.request.urlopen(data_url) as url:
     python_obj = json.loads(url.read().decode())["result"]["records"]
 
-#def filterByRadius():
+def filterByRadius():
     userLon = -71.0471685
     userLat = 42.3506126
     radius = 5
