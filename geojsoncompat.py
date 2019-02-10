@@ -28,7 +28,6 @@ def filterByRadius(dict, lat, long, radius):
     month = object["month"]
     year = object["year"]
     date = object["occurred_on_date"]
-    print(str(distBetween(long1, lat1, long, lat)))
 
     if (distBetween(long1, lat1, long, lat) <= radius):
       arrayOfObjects.append({
