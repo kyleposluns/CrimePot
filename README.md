@@ -7,4 +7,4 @@ A project that uses the data from the Crime Incident Reports provided by the Bos
 - Stanley Liu
 - Kyle Posluns
 - Sauharda Rajbhandari
-- Daniel Wang
+- Zefeng (Daniel) Wang
