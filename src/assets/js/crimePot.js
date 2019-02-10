@@ -454,15 +454,12 @@ const silverStyle = [
 
 var getStarted = document.getElementById("getStarted");
 getStarted.addEventListener("click", function () {
-<<<<<<< HEAD
+  map.setOptions({ styles: retroStyle });
+
   $(".inputUI").attr("style", "display: flex");
 
-=======
-  console.log("clicked");
->>>>>>> 0915881c54ae7044110210f8d43d26ae10b532f3
   var canvas = document.getElementsByClassName("canvas");
 
-  map.setOptions({styles:retroStyle});
   canvas[0].remove();
   placeBlueMarkers();
 
@@ -525,7 +522,7 @@ function placeBlueMarkers() {
 }
 
 function initMap() {
-  var Boston = {lat: 42.361145, lng: -71.057083};
+  var Boston = { lat: 42.361145, lng: -71.057083 };
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: Boston,
@@ -533,10 +530,6 @@ function initMap() {
     styles: silverStyle
   });
   // var infoWindow = new google.maps.InfoWindow();
-
-
-
-
 
   //Declaring apiKey constant for later use in program
   const apiKey = 'AIzaSyCGEIJiz7_1X6o4rve4r_mxxKefkkoOwYc';
@@ -595,8 +588,8 @@ output.oninput = function () {
 }
 
 function updateRadiusText(val) {
-  document.getElementById('radius').value=val; 
+  document.getElementById('radius').value = val;
 }
 function updateMilesText(val) {
-  document.getElementById('miles').value=val; 
+  document.getElementById('miles').value = val;
 }
