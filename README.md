@@ -2,6 +2,11 @@
 
 ##### Web app for viewing criminal activity near you.
 
+Written in Python 3, Flask, Javascript, HTML, and CSS. Created for [Hack Beanpot](https://hackbeanpot.com/) 2019.
+
+![alt text](https://i.imgur.com/D9MfoGH.png)
+![alt text](https://i.imgur.com/bUgYiW4.png)
+
 A project that uses the data from the Crime Incident Reports provided by the Boston Police Department.
 
 This project was designed to help people in disadvantaged areas. The crime incident reports data is 
@@ -14,12 +19,6 @@ us:
 “Unless someone like you cares a whole awful lot,
 Nothing is going to get better. It's not.” - Dr. Seuss, The Lorax. 
 
-
-Written in Python 3, Flask, Javascript, HTML, and CSS. Created for [Hack Beanpot](https://hackbeanpot.com/) 2019.
-
-![alt text](https://i.imgur.com/D9MfoGH.png)
-![alt text](https://i.imgur.com/bUgYiW4.png
-)
 [Here](https://devpost.com/software/CrimePot) is the the devpost page!
 
 ### Requirements
