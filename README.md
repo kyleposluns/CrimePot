@@ -18,12 +18,15 @@ Nothing is going to get better. It's not.” - Dr. Seuss, The Lorax.
 Written in Python 3, Flask, Javascript, HTML, and CSS. Created for [Hack Beanpot](https://hackbeanpot.com/) 2019.
 
 ![alt text](https://i.imgur.com/D9MfoGH.png)
-![alt text](https://i.imgur.com/bUgYiW4.png)
+![alt text](https://i.imgur.com/bUgYiW4.png
+)
+[Here](https://devpost.com/software/CrimePot) is the the devpost page!
 
 ### Requirements
 * `python 3.7.2`
 
-[Here](https://devpost.com/software/CrimePot) is the the devpost page!
+### Instructions
+* `./crimepot.py`
 
 ## By:
 - Pratheek Hegde [@prathegde](https://github.com/prathegde) Front End
